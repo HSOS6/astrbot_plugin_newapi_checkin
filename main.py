@@ -700,7 +700,7 @@ class NewAPICheckinProPlugin(Star):
                     )
                     return
 
-                if self.penalty_quota > 0:
+                if self.penalty_quota > 0 and old_quota > 0:
                     actual_penalty = min(self.penalty_quota, old_quota)
                     await self.client.decrease_user_quota(user_id, actual_penalty)
                     updated_user = await self.client.get_user(user_id)
